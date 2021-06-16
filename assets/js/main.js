@@ -1,13 +1,3 @@
-
-$(document).ready(function () {
-
-  $('.header-navbar__hamburger').on('click', function () {
-    $(this).toggleClass('active');
-    $('.header-navbar__list').toggleClass('active');
-  });
-
-});
-
 /* #1 */
 var myNum = 10;
 var myStr = 'строка';
