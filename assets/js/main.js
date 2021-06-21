@@ -1,69 +1,115 @@
-/* Домашнее задание №1 */
+/* Домашнее задание №2 */
 /* #1 */
-var myNum = 10;
-var myStr = 'строка';
-var myBool = true;
-var myArr = [1, 2, 3, 4, 5];
-var myObj = {
-first: 'First Name',
-last: 'Last Name'
+var userObj = {
+  firstName: 'Tatyana',
+  lastName: 'Dedyulya',
+  age: 37,
+  fullName() {
+    return `${userObj.firstName} ${userObj.lastName}`;
+  }
 };
-console.log ('myNum: ', myNum);
-console.log ('myStr: ', myStr);
-console.log ('myBool: ', myBool);
-console.log ('myArr: ', myArr);
-console.log ('myObj: ', myObj);
-
+  
 /* #2 */
-var decimal2 = myNum.toFixed(2);
+console.log(userObj);
+console.log(userObj.fullName());
 
 /* #3 */
-var i = 0;
-console.log ('Префиксный инкремент: ', ++i);
-console.log ('Постфиксный инкремент: ', i++);
-console.log ('Значение i: ', i);
-console.log ('Префиксный декремент: ', --i);
-console.log ('Постфиксный декремент: ', i--);
-console.log ('Значение i: ', i);
+function defUpperStr(str) {
+  return (str || 'Default text').toUpperCase();
+}
+console.log(defUpperStr('My text'));
+console.log(defUpperStr());
 
 /* #4 */
-var myTest = 20;
-myTest += myNum;
-console.log ('+=', myTest);
-myTest -= 4;
-console.log ('-=', myTest);
-myTest *= 2;
-console.log ('*=', myTest);
-myTest /= 3;
-console.log ('/=', myTest);
-myTest %= 25;
-console.log ('%', myTest);
+function evenFn(n) {
+  let arr = [];
+  for (let i=1; i<=n; i++) if (i % 2 ===0) arr.push(i);
+  return arr;
+}
+console.log(evenFn(10));
+console.log(evenFn(15));
+console.log(evenFn(20));
 
 /* #5 */
-var myPi = Math.PI;
-console.log ('myPi: ', myPi);
-var myRound = Math.round(89.279);
-console.log ('myRound: ', myRound);
-var myRandom = Math.random() * 10;
-console.log ('myRandom: ', myRandom);
-var myPow = Math.pow(3, 5);
-console.log ('myPow: ', myPow);
+function weekFn(n) {
+  let str = '';
+  switch (n) {
+    case 1:
+      str = 'Понедельник';
+      break;
+    case 2:
+      str = 'Вторник';
+      break;
+    case 3:
+      str = 'Среда';
+      break;
+    case 4:
+      str = 'Четверг';
+      break;
+    case 5:
+      str = 'Пятница';
+      break;
+    case 6:
+      str = 'Суббота';
+      break;
+    case 7:
+      str = 'Воскресенье';
+      break;
+    default:
+      str = null;
+  }
+  return str;
+}
+console.log(weekFn(1));
+console.log(weekFn(2));
+console.log(weekFn(7));
+console.log(weekFn(0.5));
+console.log(weekFn(10));
+console.log(weekFn('5'));
 
 /* #6 */
-var strObj = {str: 'Мама мыла раму, рама мыла маму'};
-strObj.length = strObj.str.length;
-console.log ('srtObj = ', strObj);
+function ageClassification(n) {
+  return n < 0 ? null :
+  n <= 24 ? 'детский возраст' :
+  n <= 44 ? 'молодой возраст' :
+  n <= 65 ? 'средний возраст' :
+  n <= 75 ? 'пожилой возраст' :
+  n <= 90 ? 'старческий возраст' :
+  n <= 122 ? 'долгожители' : null;
+}
+console.log(ageClassification(14));
+console.log(ageClassification(24.01));
+console.log(ageClassification(50));
+console.log(ageClassification(75));
+console.log(ageClassification(123));
+console.log(ageClassification(-1));
 
 /* #7 */
-var isRamaPos = strObj.str.indexOf('рама');
-console.log ('isRamaPos: ', isRamaPos);
+function oddFn(n) {
+  let arr = [];
+  let i = 0;
+  while (i++ < n) if (i % 2 !==0) arr.push(i);
+  return arr;
+}
+console.log(oddFn(10));
+console.log(oddFn(15));
+console.log(oddFn(20));
 
 /* #8 */
-var strReplace = strObj.str.replace('мыла', 'моет');
-strReplace = strReplace.replace('рама', 'Рама');
-strReplace = strReplace.replace('мыла', 'держит');
-console.log ('strReplace: ', strReplace);
-
-/* #9 */
-console.log(myStr.toUpperCase());
-console.log(strReplace.toLowerCase());
+function mainFunc(a, b, func) {
+  if (func && typeof func === 'function') return func(a, b);
+  return false;
+}
+function cbRandom(a, b) {
+  return Math.floor(Math.random() * (b - a + 1)) + a;
+}
+function cbPow(a, b) {
+  return Math.pow(a, b);
+}
+function cbAdd(a, b) {
+  return a + b;
+}
+console.log(mainFunc(2, 5, cbRandom));
+console.log(mainFunc(2, 5, cbPow));
+console.log(mainFunc(2, 5, cbAdd));
+console.log(mainFunc(2, 5, 'not a func'));
